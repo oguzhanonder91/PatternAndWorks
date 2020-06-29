@@ -1,0 +1,31 @@
+* Oluşturulmaları zaman alıcı ve sistem kaynaklarını zorlayan nesnelere verilen addır.
+* Bu Nesneler vekil oldukları nesnelerin tüm metodlarına sahiptirler. Ve kullanıcı sınıf ile vekil olunan nesne arasında aracılık yaparlar.
+* Vekil olan nesne , kullanıcı sınıfa, vekil olunan nesne gibi davranır ve kullanıcı sınıftan gelen tüm istekleri vekil olunan nesneye iletir.
+* Böyle bir yapının kullanılmasının sebebi , gerek olmadığı sürece vekil olunan nesnenin oluşturulmasını engellemektedir ya da vekil olunan nesneyi gizlemektir.
+   böylece vekil olunan nesneye dışardan erişimlerde kontrol altına alınmış olur.
+
+ * Yazılan programın yapısına göre değişik proxy nesneler kullanılabilir. Virtual,Remote,Dynamic proxy nesneler olabilir.
+
+ Virtual Proxy :  İçinde yüzlerce sayfanın ve resmin bulunduğu bir Word dokümanı, virtual proxy nesnelerin
+                  kullanımını açıklamak için iyi bir örnektir. Doküman açıldığında, doküman içinde bulunan
+                  tüm resimler bir seferde Word programı tarafından yüklenmez. Eğer böyle olsa idi,
+                  dokümanın ilk sayfasını görmek çok uzun zaman alırdı, çünkü Word programı uzun bir süre
+                  resimleri yüklemek ile meşgul olurdu. Word programının nasıl çalıştığını tam olarak
+                  bilmemekle beraber, proxy nesnelerin kullanıldığını düşünebiliriz. Doküman içinde yer alan
+                  tüm grafikler için bir proxy nesnesi oluşturulur. Bir grafik için bir proxy nesnesinin
+                  oluşturulması, temsil ettiği grafigin yüklenmesi ve gösterilmesi anlamına gelmez. Daha
+                  ziyade proxy nesne, doküman içinde grafik yerine oluşturulan bir yer tutucu öğe (placeholder)
+                  olarak düşünülebilir.
+
+                  Proxy, yerini aldığı grafiğin boyutlarını tanıyor olabilir ve Word programına, yüklenmesi
+                  gereken grafiğin eni ve boyu hakkında bilgi verebilir. Grafiğin yüklenme işlemi ise, Word
+                  programı içinde grafiğin yer aldığı sayfanın gösterimi ile gerçekleşir. Grafiğin bulunduğu
+                  sayfa gösterilmediği sürece, proxy nesne grafiğin yerini alır ve grafiği temsil eder. Word
+                  programı, grafiğin bulunduğu sayfaya gelindiginde proxy nesnesinin ciz() ya da goster()
+                  metodunu kullanarak, grafiğin sayfa içinde gösterilmesini sağlar. Aslında grafiğin gösterilme
+                  işlemi proxy nesne tarafından değil, proxy nesnesinin ciz() ya da goster() metoduna gelen
+                  çağrının asıl grafik nesnesinin bu isimdeki metoduna delege edilmesiyle gerçekleşir. Bu
+                  sayede gerek duyulmadığı sürece, yani grafiğin yer aldığı sayfa gösterimde olmadığı sürece
+                  asıl grafik nesnesi oluşturulmaz. Bu da sistem kaynaklarının daha idareli kullanılmasını sağlar
+                  ve programın reaksiyon süresini azaltır.
+

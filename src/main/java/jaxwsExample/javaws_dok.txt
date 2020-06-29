@@ -1,0 +1,3 @@
+1-  ilk olarak webservisimiz için endpoint interfaceni oluştururuz. endpoint ->(kullanıcının bizim webservisimize nereden ulaşacağını gösterir.)
+2 - Yazdığımız endpoint interfacemizi implement edecek olan classımızı yazıyoruz.
+3- endpointimizin hangi adresden yayınlanacağını söylüyoruz
